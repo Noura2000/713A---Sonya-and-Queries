@@ -1,0 +1,44 @@
+#include <iostream>
+#include<map>
+#include<bits/stdc++.h>
+#include<algorithm>
+
+using namespace std;
+
+long long pattern(long long n)
+{
+    long long pat=0,i=0;
+    int x=n%10;
+    while(n>0)
+    {
+
+        if(n%2==0) {i++;}
+        else {
+        pat=pat+pow(10,i);
+        i++;}
+        n/=10;
+    }
+    return pat;
+}
+
+int main()
+{
+    map<long long,long long>mp;
+    long long t,in;
+    char c;
+    cin>>t;
+    while(t--)
+    {
+        cin>>c>>in;
+        if(c=='+')
+        {
+              mp[pattern(in)]++;
+        }else if(c=='-')
+        {
+            mp[pattern(in)]--;
+        }else{
+           cout<<mp[pattern(in)]<<endl;
+        }
+    }
+    return 0;
+}
